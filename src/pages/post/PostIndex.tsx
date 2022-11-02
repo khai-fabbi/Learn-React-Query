@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query'
 import axios from 'axios'
+import LoadingPage from '@/component/loading/loading-primary'
 
 const fetchPostList = () =>
   axios.get('http://localhost:8008/api/v1/post/').then((data) => data.data)
@@ -10,13 +11,10 @@ export default function PostList() {
     isError,
     error,
   } = useQuery('post-list', fetchPostList, {
-    cacheTime: 5000,
+    staleTime: 30000,
   })
   console.log(postList)
-  if (isLoading)
-    return (
-      <div className="mt-10 mx-auto animate-spin h-10 w-10 rounded-full border-4 border-blue-500 border-t-transparent shadow duration-150"></div>
-    )
+  if (isLoading) return <LoadingPage></LoadingPage>
   if (isError && error instanceof Error)
     return <h1 className="text-red text-center">{error.message}</h1>
   return (

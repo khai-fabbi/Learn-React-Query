@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './contexts/auth-context'
-import TodoIndex from './pages/todo/TodoIndex'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import PostList from './pages/post/PostIndex'
-import LayoutMain from './component/layout/LayoutMain'
+import TodoIndex from '@/pages/todo/TodoIndex'
+import LayoutMain from '@/component/layout/LayoutMain'
+import PostList from '@/pages/post/PostIndex'
 const queryClient = new QueryClient()
 function App() {
   return (
